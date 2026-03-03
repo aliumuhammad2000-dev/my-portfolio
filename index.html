@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./output.css" rel="stylesheet">
+  <link href="./src/output.css" rel="stylesheet">
 </head>
 <body class="overflow-x-hidden">
   <header class="sticky top-0 z-50">
@@ -20,22 +20,22 @@
                 <a class="transition-all duration-500 hover:bg-blue-600 hover:text-white px-4 py-1 rounded-full cursor-pointer" href="#services">services</a>
                 <a class="transition-all duration-500 hover:bg-blue-600 hover:text-white px-4 py-1 rounded-full cursor-pointer" href="#projects">projects</a>
             </div>
-            <div class="lg:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <div class="menu-bar lg:hidden cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hamburger size-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-close size-6 hidden">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                 </svg>
             </div>
             <a class="hidden lg:flex bg-blue-700 text-white px-2 py-1.5 rounded-3xl font-medium cursor-pointer transition-all transform duration-500 hover:bg-transparent hover:text-black hover:scale-110" href="#contact">Contact Me</a>
         </div>
-        <ul class="hidden lg:hidden fixed right-0 w-2/4 max-w-sm bg-gray-50 px-10 py-8 space-y-4 rounded-bl-2xl capitalize font-medium tracking-wide">
-            <li class="transition-transform duration-500 hover:underline underline-offset-8 decoration-blue-400 hover:scale-105"><a href="#about"></a>about me</li>
-            <li class="transition-transform duration-500 hover:underline underline-offset-8 decoration-blue-400 hover:scale-105"><a href="#skill"></a>skills</li>
-            <li class="transition-transform duration-500 hover:underline underline-offset-8 decoration-blue-400 hover:scale-105"><a href="#services"></a>services</li>
-            <li class="transition-transform duration-500 hover:underline underline-offset-8 decoration-blue-400 hover:scale-105"><a href="#projects"></a>project</li>
-            <li class="transition-transform duration-500 hover:underline underline-offset-8 decoration-blue-400 hover:scale-105"><a href="#contact"></a>contact</li>
+        <ul class="nav-sidebar fixed right-0 top-16 w-2/4 max-w-sm bg-gray-100 px-10 py-8 space-y-4 rounded-bl-2xl capitalize font-medium tracking-wide shadow-lg transform translate-x-full transition-transform duration-500 ease-in-outcursor-pointer">
+            <li class="transition-transform duration-500 hover:scale-105"><a href="#about"></a>about me</li>
+            <li class="transition-transform duration-500 hover:scale-105"><a href="#skill"></a>skills</li>
+            <li class="transition-transform duration-500 hover:scale-105"><a href="#services"></a>services</li>
+            <li class="transition-transform duration-500 hover:scale-105"><a href="#projects"></a>project</li>
+            <li class="transition-transform duration-500 hover:scale-105"><a href="#contact"></a>contact</li>
         </ul>
     </nav>
   </header>
@@ -226,5 +226,6 @@
         <p class="text-center text-gray-600">© 2026 <span class="font-bold">Tunde</span>. Built with Html, tailwind & JavaScript.</p>
     </div>
   </footer>
+  <script type="module" src="scripts/index.js"></script>
 </body>
 </html>
