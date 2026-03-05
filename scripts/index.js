@@ -25,7 +25,7 @@ let projectHTML = '';
 
 projects.forEach(project => {
     projectHTML += `
-    <div class="bg-white my-4 border border-gray-200 rounded-3xl">
+    <div class="reveal bg-white my-4 border border-gray-200 rounded-3xl shadow-lg">
         <img class="w-full h-56 object-cover rounded-t-3xl" src="${project.Image}" alt="">
         <div class="mx-4 space-y-4">
             <h1 class="font-medium my-4 text-lg">${project.name}</h1>
@@ -62,3 +62,13 @@ projects.forEach(project => {
 
 const projectContainer = document.getElementById('project-container');
 projectContainer.innerHTML = projectHTML;
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+    });
+}, {threshold: 0.2});
+
+const revealElements = document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
