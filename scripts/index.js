@@ -31,9 +31,10 @@ projects.forEach(project => {
             <h1 class="font-medium my-4 text-lg">${project.name}</h1>
             <p class="text-gray-600 tracking-tight leading-relaxed">${project.description}</p>
             <div class="flex capitalize gap-3 flex-wrap">
-                <span class="bg-gray-200 text-sm text-gray-600 px-3 py-1 rounded-lg">html</span>
-                <span class="bg-gray-200 text-sm text-gray-600 px-3 py-1 rounded-lg">tailwind</span>
-                <span class="bg-gray-200 text-sm text-gray-600 px-3 py-1 rounded-lg">javascript</span>
+                <span class="bg-gray-200 text-sm text-gray-600 px-3 py-1 rounded-lg">${project.tech1}</span>
+                <span class="bg-gray-200 text-sm text-gray-600 px-3 py-1 rounded-lg">${project.tech2}</span>
+                <span class="bg-gray-200 text-sm text-gray-600 px-3 py-1 rounded-lg">${project.tech3}</span>
+                <span class="bg-gray-200 text-sm text-gray-600 px-3 py-1 rounded-lg">${project.tech4}</span>
             </div>
             <hr class="border-gray-300 my-6">
             <div class="flex text-gray-600 space-x-10 text-sm pb-5">
