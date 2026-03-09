@@ -21,6 +21,20 @@ navLinks.forEach(link => {
     });
 });
 
+document.addEventListener('click', (e) => {
+    if (!navSidebar.contains(e.target) && !menuBar.contains(e.target)) {
+        navSidebar.classList.add('translate-x-full');
+        hamburger.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+    }
+});
+
+window.addEventListener('scroll', () => {
+    navSidebar.classList.add('translate-x-full');
+    hamburger.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+});
+
 let projectHTML = '';
 
 projects.forEach(project => {
