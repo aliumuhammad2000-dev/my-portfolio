@@ -17,7 +17,17 @@ export const projects = [
         tech2 : "css",
         tech3 : "tailwind",
         tech4 : "javascript",
-        github : "#",
-        liveDemo : "#"
+        github : "https://github.com/aliumuhammad2000-dev/royalty-parfait",
+        liveDemo : "https://royaltiesparfait.netlify.app/"
+    }, {
+        Image : "./images/blog-template.png",
+        name : "Thundey Blog Template",
+        description : "It is designed to be easily customizable and extendable, allowing developers to create unique and engaging online experiences.",
+        tech1 : "html",
+        tech2 : "css",
+        tech3 : "tailwind",
+        tech4 : "javascript",
+        github : "https://github.com/aliumuhammad2000-dev/blog-template",
+        liveDemo : "https://thundeyblogtemplate.netlify.app/"
     }
 ]

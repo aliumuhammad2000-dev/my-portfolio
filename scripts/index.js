@@ -69,6 +69,6 @@ const observer = new IntersectionObserver((entries) => {
             entry.target.classList.add('active');
         }
     });
-}, {threshold: 0.2});
+}, {threshold: 0.3});
 
 const revealElements = document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
