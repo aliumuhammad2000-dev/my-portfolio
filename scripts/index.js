@@ -30,13 +30,13 @@ projects.forEach(project => {
         <div class="mx-4 space-y-4">
             <h1 class="font-medium my-4 text-lg">${project.name}</h1>
             <p class="text-gray-600 tracking-tight leading-relaxed">${project.description}</p>
-            <div class="flex capitalize gap-3 flex-wrap">
+            <div class="flex capitalize gap-3 flex-wrap mt-2">
                 <span class="bg-gray-200 text-sm text-gray-600 px-3 py-1 rounded-lg">${project.tech1}</span>
                 <span class="bg-gray-200 text-sm text-gray-600 px-3 py-1 rounded-lg">${project.tech2}</span>
                 <span class="bg-gray-200 text-sm text-gray-600 px-3 py-1 rounded-lg">${project.tech3}</span>
                 <span class="bg-gray-200 text-sm text-gray-600 px-3 py-1 rounded-lg">${project.tech4}</span>
             </div>
-            <hr class="border-gray-300 my-6">
+            <hr class="border-gray-300 space-y-5">
             <div class="flex text-gray-600 space-x-10 text-sm pb-5">
                 <div class="flex space-x-2 transition-all duration-500 hover:text-black">
                     <svg class="size-4" viewBox="0 0 128 128">
@@ -72,3 +72,45 @@ const observer = new IntersectionObserver((entries) => {
 }, {threshold: 0.3});
 
 const revealElements = document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+const form = document.getElementById('contactForm');
+const message = document.getElementById('formMsg');
+const submitBtn = document.getElementById('submitBtn');
+
+form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    submitBtn.disabled = true;
+    submitBtn.innerText = 'Sending...';
+
+    const formData = new FormData(form);
+
+    try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            message.classList.remove("hidden");
+            message.classList.add("text-green-600");
+            message.innerText = "Message sent successfully!";
+            form.reset();
+        } else {
+            throw new Error("Form submission failed");
+        }
+    } catch (error) {
+        message.classList.remove("hidden", "text-green-600");
+        message.classList.add("text-red-600");
+        message.innerText = "Something went wrong.";
+    }
+    submitBtn.innerText = "Send Message";
+    submitBtn.disabled = false;
+
+    setTimeout(() => {
+        message.classList.add("hidden");
+        message.innerHTML = "";
+    }, 5000);
+});

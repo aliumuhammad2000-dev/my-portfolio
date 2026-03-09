@@ -41,7 +41,7 @@
   </header>
   <section>
     <div class="reveal flex flex-col justify-center items-center mt-10 md:mx-20">
-        <div class="reveal md:grid grid-cols-2 justify-items-center">
+        <div class="reveal md:grid grid-cols-2 justify-center items-center">
             <div class="reveal">
                 <img class="w-28 h-28 object-cover rounded-full" src="/images/my photo.jpg" alt="">
             </div>
@@ -61,9 +61,9 @@
   <section>
     <div id="projects" class="mx-10 md:mx-20">
         <div class="justify-items-center mt-10 mb-5">
-            <h2 class="reveal bg-black px-4 py-1.5 font-medium font-serif text-white rounded-full tracking-widest">My Projects</h2>
-            <h1 class="reveal text-2xl font-bold">Explore My Work</h1>
-            <p class="reveal text-lg text-gray-600">some of the projects that reflect my skills.</p>
+            <h2 class="reveal bg-black px-4 py-1.5 font-medium font-serif text-white rounded-full text-center tracking-widest">My Projects</h2>
+            <h1 class="reveal text-2xl font-bold text-center">Explore My Work</h1>
+            <p class="reveal text-lg text-gray-600 text-center">some of the projects that reflect my skills.</p>
         </div>
         <div id="project-container" class="reveal md:grid grid-cols-2 gap-10">
         </div>
@@ -72,8 +72,8 @@
   <section>
     <div id="services" class="mx-10 md:mx-20">
         <div class="justify-items-center mt-10">
-            <h1  class="reveal text-2xl bg-black rounded-full text-white tracking-wider px-4 py-1">Services</h1>
-            <p class="reveal text-sm text-gray-600">What can i do for you?</p>
+            <h1  class="reveal text-2xl bg-black rounded-full text-white tracking-wider px-4 py-1 text-center">Services</h1>
+            <p class="reveal text-sm text-gray-600 text-center">What can i do for you?</p>
         </div>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div class="reveal bg-white rounded-2xl border border-gray-200 mt-2 px-4 py-2">
@@ -116,7 +116,7 @@
   <section>
     <div id="contact" class="mx-10 md:mx-20">
         <div class="justify-items-center mt-10">
-            <h1 class="reveal bg-black text-white text-lg px-4 py-1 rounded-3xl">Let's Connect</h1>
+            <h1 class="reveal bg-black text-white text-lg px-4 py-1 rounded-3xl text-center">Let's Connect</h1>
             <h2 class="reveal text-2xl text-center font-bold">Let's Build Something Great Together</h2>
         </div>
         <div class="md:flex gap-8">
@@ -146,13 +146,14 @@
                 </div>
             </div>
             <div class="reveal mt-5 md:flex-2/5">
-                <form action="https://api.web3forms.com/submit" method="POST" class="border border-gray-400 px-5 py-5 rounded-2xl">
+                <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="border border-gray-400 px-5 py-5 rounded-2xl">
 
                     <input type="hidden" name="access_key" value="98ae9256-b001-492d-a963-c06a7bab23f2">
-                    <input class="w-full border border-gray-400 outline-0 px-3.5 py-2 my-3.5 rounded-lg" type="text" placeholder="Your Name">
-                    <input class="w-full border border-gray-400 outline-0 px-3.5 py-2 my-3.5 rounded-lg" type="email" placeholder="Your Email">
+                    <input class="w-full border border-gray-400 outline-0 px-3.5 py-2 my-3.5 rounded-lg" type="text" name="name" placeholder="Your Name">
+                    <input class="w-full border border-gray-400 outline-0 px-3.5 py-2 my-3.5 rounded-lg" type="email" name="email" placeholder="Your Email">
                     <textarea class="w-full border border-gray-400 outline-0 px-3.5 py-2 my-3.5 rounded-lg" name="message" id="" rows="6" placeholder="message"></textarea>
-                    <button class="bg-blue-600 text-white text-lg px-6 py-3 rounded-lg cursor-pointer transition-all duration-500 hover:bg-blue-700" type="submit">Send Message</button>
+                    <button id="submitBtn" class="bg-blue-600 text-white text-lg px-6 py-3 rounded-lg cursor-pointer transition-all duration-500 hover:bg-blue-700" type="submit">Send Message</button>
+                    <p id="formMsg" class="mt-4 text-center hidden transition-all duration-500"></p>
                 </form>
             </div>
         </div>
