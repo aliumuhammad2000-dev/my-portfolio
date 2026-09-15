@@ -2,6 +2,8 @@ import { useRef, useState } from 'react';
 
 const links = [
   { label: 'Home', href: '#home' },
+  { label: 'About', href: '#about' },
+  { label: 'Work', href: '#projects' },
   { label: 'GitHub', href: 'https://github.com/aliumuhammad2000-dev' },
   { label: "Let's talk", href: 'mailto:aliumuhammad2000@gmail.com' },
 ];
