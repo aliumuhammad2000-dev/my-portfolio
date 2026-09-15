@@ -11,6 +11,7 @@ export default function Hero() {
           <div className="mt-10 flex flex-wrap gap-4">
             <a className="rounded-full bg-teal-300 px-7 py-4 text-sm font-semibold text-slate-950 transition-colors hover:bg-teal-200" href="https://github.com/aliumuhammad2000-dev?tab=repositories">Explore my GitHub</a>
             <a className="rounded-full border border-slate-600 px-7 py-4 text-sm font-medium transition-colors hover:border-teal-300 hover:text-teal-300" href="mailto:aliumuhammad2000@gmail.com">Get in touch</a>
+            <a className="rounded-full border border-slate-600 px-7 py-4 text-sm font-medium transition-colors hover:border-teal-300 hover:text-teal-300" href="/cv.pdf" download="Aliyu-Mohammed-Tunde-CV.pdf">Download CV</a>
           </div>
         </div>
         <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
@@ -30,4 +31,3 @@ export default function Hero() {
     </section>
   );
 }
-
