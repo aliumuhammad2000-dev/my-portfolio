@@ -24,7 +24,7 @@ export default function Hero() {
       <div className="mt-16 flex flex-col justify-between gap-5 border-t border-white/10 pt-7 text-xs text-slate-400 md:mt-24 md:flex-row md:items-center">
         <p className="uppercase tracking-[0.2em]">Based in Lagos, Nigeria</p>
         <ul aria-label="Technologies I work with" className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-300">
-          {['React', 'JavaScript', 'Tailwind CSS'].map(skill => <li key={skill}>{skill}</li>)}
+          {['Typescript', 'React', 'JavaScript', 'Tailwind CSS'].map(skill => <li key={skill}>{skill}</li>)}
         </ul>
       </div>
     </section>
