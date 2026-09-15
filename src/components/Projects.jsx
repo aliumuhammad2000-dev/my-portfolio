@@ -29,7 +29,7 @@ export default function Projects() {
         <p className="max-w-xs text-sm leading-6 text-slate-400">A collection of projects I've built while learning, experimenting, and solving real problems.</p>
       </div>
       <div className="grid gap-x-10 md:grid-cols-2">
-        {projects.map(project => <ProjectItem key={project.id} project={project} />)}
+        {projects.map((project, index) => <div key={project.id} className={`animate-rise animate-rise-delay-${Math.min(index + 1, 3)}`}><ProjectItem project={project} /></div>)}
       </div>
     </section>
   );

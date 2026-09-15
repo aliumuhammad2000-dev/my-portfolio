@@ -8,4 +8,11 @@ button { cursor: pointer; }
 .page-width { width: min(100% - 3rem, 1160px); margin-inline: auto; }
 .skip-link { position: fixed; top: -100px; left: 1rem; z-index: 100; padding: 1rem; background: #2dd4bf; color: #0b1120; }
 .skip-link:focus { top: 1rem; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
+.animate-rise { animation: rise-in 700ms cubic-bezier(.22,1,.36,1) both; }
+.animate-rise-delay-1 { animation-delay: 120ms; }
+.animate-rise-delay-2 { animation-delay: 240ms; }
+.animate-rise-delay-3 { animation-delay: 360ms; }
+.animate-float { animation: float 5s ease-in-out infinite; }
+@keyframes rise-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float { 0%, 100% { transform: translateY(0) rotate(2deg); } 50% { transform: translateY(-7px) rotate(2deg); } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
