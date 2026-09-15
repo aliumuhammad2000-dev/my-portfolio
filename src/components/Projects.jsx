@@ -2,7 +2,7 @@ import { projects } from '../data/projects.js';
 
 function ProjectItem({ project }) {
   return (
-    <article className="group py-8 md:grid md:grid-cols-[3rem_1fr] md:items-start md:gap-5">
+    <article className="group py-8">
       <div>
         <h3 className="text-2xl font-semibold tracking-tight transition-colors group-hover:text-teal-300 md:text-3xl">{project.name}</h3>
         <p className="mt-3 max-w-2xl leading-7 text-slate-300">{project.description}</p>
@@ -10,7 +10,7 @@ function ProjectItem({ project }) {
           {project.technologies.map(technology => <li key={technology} className="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-300">{technology}</li>)}
         </ul>
       </div>
-      <div className="mt-6 flex gap-5 text-sm md:col-start-2 md:mt-6 md:gap-5">
+      <div className="mt-6 flex gap-5 text-sm">
         <a href={project.liveDemo} target="_blank" rel="noreferrer" className="text-slate-300 transition-colors hover:text-teal-300">Live demo</a>
         <a href={project.github} target="_blank" rel="noreferrer" className="text-slate-300 transition-colors hover:text-teal-300">GitHub</a>
       </div>

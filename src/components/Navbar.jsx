@@ -20,7 +20,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0b1120]/95 backdrop-blur" onKeyDown={handleKeyDown}>
       <nav aria-label="Main navigation" className="page-width flex min-h-24 flex-wrap items-center justify-between gap-4 py-5">
-        <a href="#home" onClick={() => setIsMenuOpen(false)} aria-label="THUNDEY home" className="text-xl font-extrabold tracking-[-0.06em]">THUNDEY<span className="text-teal-300">.</span></a>
+        <a href="#home" onClick={() => setIsMenuOpen(false)} aria-label="THUNDEY home" className="text-xl font-extrabold tracking-[-0.06em]">THUNDEY</a>
         <button ref={menuButton} type="button" aria-expanded={isMenuOpen} aria-controls="navigation-links" onClick={() => setIsMenuOpen(open => !open)} className="rounded-full border border-white/20 px-5 py-2 text-sm md:hidden">
           {isMenuOpen ? 'Close −' : 'Menu +'}
         </button>
