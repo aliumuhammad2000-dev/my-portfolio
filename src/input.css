@@ -1,9 +1,11 @@
 @import "tailwindcss";
-
-.reveal {
-    @apply opacity-0 translate-y-10 transition-transform duration-700 ease-out;
-}
-
-.reveal.active {
-    @apply opacity-100 translate-y-0;
-}
+:root { font-family: "Segoe UI", Arial, sans-serif; color: #f8fafc; background: #0b1120; font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; color-scheme: dark; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; }
+::selection { background: #2dd4bf; color: #0b1120; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid #2dd4bf; outline-offset: 5px; }
+.page-width { width: min(100% - 3rem, 1160px); margin-inline: auto; }
+.skip-link { position: fixed; top: -100px; left: 1rem; z-index: 100; padding: 1rem; background: #2dd4bf; color: #0b1120; }
+.skip-link:focus { top: 1rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
