@@ -31,4 +31,12 @@ export const projects = [
     liveDemo: 'https://thundeyblogtemplate.netlify.app/',
     github: 'https://github.com/aliumuhammad2000-dev/blog-template',
   },
+  {
+    id: '05',
+    name: 'Thundey Track',
+    description: 'A responsive job application tracker for practicing React, CRUD workflows, and REST API integration.',
+    technologies: ['React', 'Tailwind CSS', 'REST API', 'Lucide React'],
+    liveDemo: 'https://thundey-tracker.vercel.app/',
+    github: 'https://github.com/aliumuhammad2000-dev/thundey-tracker',
+  },
 ];
