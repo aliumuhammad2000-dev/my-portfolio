@@ -39,4 +39,12 @@ export const projects = [
     liveDemo: 'https://thundey-tracker.vercel.app/',
     github: 'https://github.com/aliumuhammad2000-dev/thundey-tracker',
   },
+  {
+    id: '06',
+    name: 'Thundey GitHub Explorer',
+    description: 'A React app for discovering GitHub developers and repositories through the GitHub REST API.',
+    technologies: ['React', 'Tailwind CSS', 'JavaScript', 'REST API'],
+    liveDemo: 'https://thundey-github-explorer.vercel.app/',
+    github: 'https://github.com/aliumuhammad2000-dev/Thundey-github-explorer',
+  },
 ];
