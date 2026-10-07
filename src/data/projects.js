@@ -1,3 +1,5 @@
+// Migration reference only. Runtime project data is loaded from Supabase.
+
 export const projects = [
   {
     id: '01',
