@@ -1,4 +1,4 @@
-const skills = ['React', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'HTML', 'CSS', 'Git', 'GitHub', 'API integration'];
+const skills = ['React', 'JavaScript', 'TypeScript', 'Next.js', 'Tailwind CSS', 'HTML', 'CSS', 'Git', 'GitHub', 'API integration'];
 
 export default function Skills() {
   return (
