@@ -12,7 +12,7 @@ export default function App() {
     <>
       <a href="#main" className="skip-link">Skip to content</a>
       <Navbar />
-      <main id="main" tabIndex={-1}><Hero /><About /><Services /><Skills /><Projects /><Contact /></main>
+      <main id="main" tabIndex={-1}><Hero /><Projects /><Skills /><About /><Services /><Contact /></main>
       <Footer />
     </>
   );

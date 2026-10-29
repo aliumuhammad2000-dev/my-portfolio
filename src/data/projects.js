@@ -1,52 +1,15 @@
-// Migration reference only. Runtime project data is loaded from Supabase.
+import bookstoreImage from '../../images/my-store.png';
+import royaltyImage from '../../images/royalty-cart.png';
+import blogImage from '../../images/blog-template.png';
+import thundeyImage from '../../images/my-tracker.png';
+import thundeyGitExplorerImage from '../../images/github-explorer.png';
+
 
 export const projects = [
-  {
-    id: '01',
-    name: 'Online Bookstore',
-    description: 'A responsive bookstore where readers can browse books, explore details, and manage a shopping cart.',
-    technologies: ['React', 'Tailwind CSS', 'JavaScript'],
-    liveDemo: 'https://online-bookstore-cyan-two.vercel.app/',
-    github: 'https://github.com/aliumuhammad2000-dev/online-bookstore',
-  },
-  {
-    id: '02',
-    name: 'Thundey Store',
-    description: 'An e-commerce website for exploring products and enjoying a simple shopping experience.',
-    technologies: ['HTML', 'Tailwind CSS', 'JavaScript'],
-    liveDemo: 'https://thundeystore.netlify.app/',
-    github: 'https://github.com/aliumuhammad2000-dev/my-store',
-  },
-  {
-    id: '03',
-    name: 'Royalty Parfait',
-    description: 'A focused ordering experience for discovering and ordering your favourite parfait.',
-    technologies: ['HTML', 'Tailwind CSS', 'JavaScript'],
-    liveDemo: 'https://royaltiesparfait.netlify.app/',
-    github: 'https://github.com/aliumuhammad2000-dev/royalty-parfait',
-  },
-  {
-    id: '04',
-    name: 'Thundey Blog Template',
-    description: 'A flexible blog template designed for developers to customise and extend.',
-    technologies: ['HTML', 'Tailwind CSS', 'JavaScript'],
-    liveDemo: 'https://thundeyblogtemplate.netlify.app/',
-    github: 'https://github.com/aliumuhammad2000-dev/blog-template',
-  },
-  {
-    id: '05',
-    name: 'Thundey Track',
-    description: 'A responsive job application tracker for practicing React, CRUD workflows, and REST API integration.',
-    technologies: ['React', 'Tailwind CSS', 'REST API', 'Lucide React'],
-    liveDemo: 'https://thundey-tracker.vercel.app/',
-    github: 'https://github.com/aliumuhammad2000-dev/thundey-tracker',
-  },
-  {
-    id: '06',
-    name: 'Thundey GitHub Explorer',
-    description: 'A React app for discovering GitHub developers and repositories through the GitHub REST API.',
-    technologies: ['React', 'Tailwind CSS', 'JavaScript', 'REST API'],
-    liveDemo: 'https://thundey-github-explorer.vercel.app/',
-    github: 'https://github.com/aliumuhammad2000-dev/Thundey-github-explorer',
-  },
+  { id: 'thundey-track', title: 'Thundey Track', image: thundeyImage, short_description: 'A responsive job application tracker built around clear status workflows and a focused dashboard.', details: ['CRUD application workflows', 'REST API integration', 'Search and status filtering', 'Loading and error states'], technologies: ['React', 'Tailwind CSS', 'REST API'], live_url: 'https://thundey-tracker.vercel.app/', github_url: 'https://github.com/aliumuhammad2000-dev/thundey-tracker' },
+  { id: 'thundey-github-explorer', title: 'Thundey GitHub Explorer', image: thundeyGitExplorerImage, short_description: 'A React app for discovering GitHub developers and repositories through the GitHub REST API.', details: ['GitHub API integration', 'Developer discovery', 'Repository exploration', 'Loading and error states', 'Accessibility and search optimization'], technologies: ['React', 'Tailwind CSS', 'JavaScript', 'REST API'], live_url: 'https://thundey-github-explorer.vercel.app/', github_url: 'https://github.com/aliumuhammad2000-dev/Thundey-github-explorer' },
+  { id: 'online-bookstore', title: 'Online Bookstore', image: bookstoreImage, short_description: 'A responsive storefront for browsing books, viewing product details, and managing a shopping cart.', details: ['Book browsing and product details', 'Cart interactions', 'Responsive layouts', 'Reusable UI components'], technologies: ['React', 'Tailwind CSS', 'JavaScript'], live_url: 'https://online-bookstore-cyan-two.vercel.app/', github_url: 'https://github.com/aliumuhammad2000-dev/online-bookstore' },
+  { id: 'royalty-parfait', title: 'Royalty Parfait', image: royaltyImage, short_description: 'A food ordering experience with product categories, cart controls, and a simple order flow.', details: ['Interactive product cards', 'Cart quantity controls', 'Order updates', 'Local Storage persistence'], technologies: ['HTML', 'Tailwind CSS', 'JavaScript'], live_url: 'https://royaltiesparfait.netlify.app/', github_url: 'https://github.com/aliumuhammad2000-dev/royalty-parfait' },
+  { id: 'thundey-store', title: 'Thundey Store', image: bookstoreImage, short_description: 'An e-commerce interface for exploring products through a clean, responsive shopping experience.', details: ['Product-focused layouts', 'Responsive navigation', 'Reusable storefront sections'], technologies: ['HTML', 'Tailwind CSS', 'JavaScript'], live_url: 'https://thundeystore.netlify.app/', github_url: 'https://github.com/aliumuhammad2000-dev/my-store' },
+  { id: 'blog-template', title: 'Thundey Blog Template', image: blogImage, short_description: 'A flexible blog template with a strong editorial layout that developers can customise and extend.', details: ['Responsive editorial layout', 'Reusable page sections', 'Customisable visual system'], technologies: ['HTML', 'Tailwind CSS', 'JavaScript'], live_url: 'https://thundeyblogtemplate.netlify.app/', github_url: 'https://github.com/aliumuhammad2000-dev/blog-template' },
 ];

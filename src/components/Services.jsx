@@ -9,8 +9,8 @@ export default function Services() {
   return (
     <section id="services" aria-labelledby="services-heading" className="page-width scroll-mt-28 py-20 md:py-28">
       <div className="mb-10 md:mb-14">
-        <p className="mb-4 text-xs font-medium uppercase tracking-[0.22em] text-teal-300">What I can do</p>
-        <h2 id="services-heading" className="text-4xl font-semibold tracking-tighter md:text-6xl">Ways I can help.</h2>
+        <p className="mb-4 text-xs font-medium uppercase tracking-[0.22em] text-teal-300">Working style</p>
+        <h2 id="services-heading" className="text-4xl font-semibold tracking-tighter md:text-6xl">From idea to interface.</h2>
       </div>
       <div className="grid gap-x-10 gap-y-0 md:grid-cols-2">
         {services.map((service, index) => (
