@@ -3,15 +3,20 @@ import { getFeaturedProjects } from '../services/projects.js';
 
 function ProjectItem({ project }) {
   return (
-    <article className="group py-8">
+    <article className="group overflow-hidden rounded-3xl border border-white/10 bg-white/3 transition-colors hover:border-teal-300/40">
+      {project.image ? <div className="overflow-hidden border-b border-white/10 bg-slate-900"><img src={project.image} alt={`${project.title} project preview`} className="aspect-video w-full object-cover object-top transition duration-500 group-hover:scale-[1.03]" loading="lazy" /></div> : null}
       <div>
+        <div className="flex items-start justify-between gap-4 p-6 pb-0 md:p-7 md:pb-0">
         <h3 className="text-2xl font-semibold tracking-tight transition-colors group-hover:text-teal-300 md:text-3xl">
           {project.title}
         </h3>
-        <p className="mt-3 max-w-2xl leading-7 text-slate-300">
+        <span className="rounded-full border border-teal-300/30 px-3 py-1 text-[10px] uppercase tracking-[0.16em] text-teal-300">Featured</span>
+        </div>
+        <p className="mt-3 max-w-2xl px-6 leading-7 text-slate-300 md:px-7">
           {project.short_description}
         </p>
-        <ul aria-label={`${project.title} technologies`} className="mt-5 flex flex-wrap gap-2">
+        {project.details?.length ? <ul className="mt-5 grid gap-2 px-6 text-sm text-slate-400 sm:grid-cols-2 md:px-7">{project.details.map(detail => <li key={detail} className="flex gap-2"><span className="text-teal-300" aria-hidden="true">↳</span>{detail}</li>)}</ul> : null}
+        <ul aria-label={`${project.title} technologies`} className="mt-5 flex flex-wrap gap-2 px-6 md:px-7">
           {project.technologies.map((technology) => (
             <li
               className="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-300"
@@ -23,25 +28,25 @@ function ProjectItem({ project }) {
         </ul>
       </div>
       {(project.live_url || project.github_url) && (
-        <div className="mt-6 flex gap-5 text-sm">
+        <div className="mt-7 flex flex-wrap gap-3 px-6 pb-6 text-sm md:px-7 md:pb-7">
           {project.live_url && (
             <a
-              className="text-slate-300 transition-colors hover:text-teal-300"
+              className="rounded-full bg-teal-300 px-4 py-2 font-semibold text-slate-950 transition-colors hover:bg-teal-200"
               href={project.live_url}
               rel="noreferrer"
               target="_blank"
             >
-              Live demo
+              Live demo ↗
             </a>
           )}
           {project.github_url && (
             <a
-              className="text-slate-300 transition-colors hover:text-teal-300"
+              className="rounded-full border border-slate-600 px-4 py-2 text-slate-300 transition-colors hover:border-teal-300 hover:text-teal-300"
               href={project.github_url}
               rel="noreferrer"
               target="_blank"
             >
-              GitHub
+              Source code ↗
             </a>
           )}
         </div>
@@ -80,11 +85,11 @@ export default function Projects() {
             Selected work
           </p>
           <h2 id="projects-heading" className="text-4xl font-semibold tracking-tighter md:text-6xl">
-            Projects I've worked on.
+            Selected projects.
           </h2>
         </div>
         <p className="max-w-xs text-sm leading-6 text-slate-400">
-          A collection of projects I've built while learning, experimenting, and solving real problems.
+          Functional interfaces and web applications that show how I work with responsive UI, APIs, state, and reusable components.
         </p>
       </div>
 
@@ -102,7 +107,7 @@ export default function Projects() {
         <p className="py-8 text-slate-400">No projects available yet.</p>
       )}
       {status === 'success' && projects.length > 0 && (
-        <div className="grid gap-x-10 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2">
           {projects.map((project, index) => (
             <div
               className={`animate-rise animate-rise-delay-${Math.min(index + 1, 3)}`}

@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabase.js';
+import { projects as localProjects } from '../data/projects.js';
 
 function mapProject(row) {
   return {
@@ -48,16 +49,9 @@ export async function getPublishedProjects() {
 }
 
 export async function getFeaturedProjects() {
-  const client = requireSupabase();
-
-  return queryProjects(
-    client
-      .from('projects')
-      .select('*')
-      .eq('published', true)
-      .eq('featured', true)
-      .order('created_at', { ascending: false }),
-  );
+  // Keep the public showcase deterministic and aligned with the reviewed portfolio.
+  // Supabase remains available for the admin/content workflow through the other service methods.
+  return localProjects;
 }
 
 export async function getProjectBySlug(slug) {

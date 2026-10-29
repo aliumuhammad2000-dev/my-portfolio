@@ -6,11 +6,11 @@ export default function Hero() {
       <div className="grid items-center gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
         <div className="animate-rise">
           <p className="mb-8 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.22em] text-slate-300"><span className="h-px w-8 bg-teal-300" />Hello, I'm Tunde</p>
-          <h1 id="hero-heading" className="animate-rise animate-rise-delay-1 text-[clamp(3rem,7vw,6.5rem)] leading-[0.98] font-semibold tracking-[-0.065em]">Frontend<br /><span className="text-teal-300">Developer.</span></h1>
-          <p className="animate-rise animate-rise-delay-2 mt-8 max-w-lg text-lg leading-8 text-slate-300">I turn ideas into thoughtful web experiences. Built with care, made to work beautifully on every screen.</p>
+          <h1 id="hero-heading" className="animate-rise animate-rise-delay-1 max-w-4xl text-[clamp(3rem,7vw,6.5rem)] leading-[0.98] font-semibold tracking-[-0.065em]">Frontend Developer <span className="text-teal-300">building responsive, high-quality web applications.</span></h1>
+          <p className="animate-rise animate-rise-delay-2 mt-8 max-w-2xl text-lg leading-8 text-slate-300">I build modern web experiences with React, Next.js, TypeScript, JavaScript, and Tailwind CSS, focusing on responsive interfaces, reusable components, API integration, and reliable user experiences.</p>
           <div className="animate-rise animate-rise-delay-3 mt-10 flex flex-wrap gap-4">
-            <a className="rounded-full bg-teal-300 px-7 py-4 text-sm font-semibold text-slate-950 transition-colors hover:bg-teal-200" href="https://github.com/aliumuhammad2000-dev?tab=repositories">Explore my GitHub</a>
-            <a className="rounded-full border border-slate-600 px-7 py-4 text-sm font-medium transition-colors hover:border-teal-300 hover:text-teal-300" href="mailto:aliumuhammad2000@gmail.com">Get in touch</a>
+            <a className="rounded-full bg-teal-300 px-7 py-4 text-sm font-semibold text-slate-950 transition-colors hover:bg-teal-200" href="#projects">View my projects</a>
+            <a className="rounded-full border border-slate-600 px-7 py-4 text-sm font-medium transition-colors hover:border-teal-300 hover:text-teal-300" href="#contact">Contact me</a>
             <a className="rounded-full border border-slate-600 px-7 py-4 text-sm font-medium transition-colors hover:border-teal-300 hover:text-teal-300" href="/cv.pdf" download="Aliyu-Mohammed-Tunde-CV.pdf">Download CV</a>
           </div>
         </div>
