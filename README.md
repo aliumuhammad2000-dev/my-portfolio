@@ -14,7 +14,7 @@ A responsive personal portfolio for Aliyu Mohammed (Tunde), a junior frontend de
 
 - Dark navy and teal responsive design
 - About, services, skills, and projects sections
-- Text-only project showcase loaded from Supabase
+- Published project showcase loaded from Supabase
 - Downloadable CV
 - Contact form powered by Web3Forms
 - Responsive navigation and subtle animations
@@ -30,6 +30,11 @@ my-portfolio-admin → Supabase ← my-portfolio
 
 The portfolio only performs public read requests. It does not include admin authentication or project write controls.
 
+Project image files are kept in a private Supabase Storage bucket. The browser reads
+published project metadata with the anonymous client, then requests short-lived signed
+image URLs from the `public-project-images` Edge Function. The browser never receives a
+service-role key and never signs arbitrary Storage paths.
+
 ## Environment variables
 
 Copy `.env.example` to `.env` and add the Supabase values and Web3Forms key:
@@ -37,6 +42,7 @@ Copy `.env.example` to `.env` and add the Supabase values and Web3Forms key:
 ```env
 VITE_SUPABASE_URL=https://your-project.supabase.co
 VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+VITE_SUPABASE_FUNCTIONS_URL=https://your-project.supabase.co/functions/v1/public-project-images
 VITE_WEB3FORMS_ACCESS_KEY=your_access_key
 ```
 

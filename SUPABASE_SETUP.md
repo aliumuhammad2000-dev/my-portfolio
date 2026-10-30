@@ -25,7 +25,9 @@ create table public.projects (
 );
 ```
 
-The table intentionally has no image, thumbnail, cover image, or storage fields. Projects are text-only.
+Image metadata is stored separately in the admin project's `public.project_images` table.
+Project image files are stored in a private `portfolio-project-images` Storage bucket and
+are not read directly by this public client.
 
 ## 2. Enable public read access
 
@@ -36,7 +38,10 @@ alter table public.projects enable row level security;
 
 grant select on public.projects to anon;
 revoke insert, update, delete on public.projects from anon;
-revoke select, insert, update, delete on public.projects from authenticated;
+
+-- The separate admin project uses authenticated access protected by its own
+-- admin_allowlist policies. Do not revoke authenticated SELECT/CRUD here when
+-- this database is shared with that admin project.
 
 create policy "Public can read published projects"
 on public.projects
@@ -70,14 +75,14 @@ Only use the public anon key in this frontend. Never add a Supabase service-role
 
 Create one row for each project currently shown in the portfolio. The existing content is preserved below as a migration reference:
 
-| Title | Slug | Technologies | Featured | Published |
-| --- | --- | --- | --- | --- |
-| Online Bookstore | `online-bookstore` | React, Tailwind CSS, JavaScript | true | true |
-| Thundey Store | `thundey-store` | HTML, Tailwind CSS, JavaScript | true | true |
-| Royalty Parfait | `royalty-parfait` | HTML, Tailwind CSS, JavaScript | true | true |
-| Thundey Blog Template | `thundey-blog-template` | HTML, Tailwind CSS, JavaScript | true | true |
-| Thundey Track | `thundey-track` | React, Tailwind CSS, REST API, Lucide React | true | true |
-| Thundey GitHub Explorer | `thundey-github-explorer` | React, Tailwind CSS, JavaScript, REST API | true | true |
+| Title                   | Slug                      | Technologies                                | Featured | Published |
+| ----------------------- | ------------------------- | ------------------------------------------- | -------- | --------- |
+| Online Bookstore        | `online-bookstore`        | React, Tailwind CSS, JavaScript             | true     | true      |
+| Thundey Store           | `thundey-store`           | HTML, Tailwind CSS, JavaScript              | true     | true      |
+| Royalty Parfait         | `royalty-parfait`         | HTML, Tailwind CSS, JavaScript              | true     | true      |
+| Thundey Blog Template   | `thundey-blog-template`   | HTML, Tailwind CSS, JavaScript              | true     | true      |
+| Thundey Track           | `thundey-track`           | React, Tailwind CSS, REST API, Lucide React | true     | true      |
+| Thundey GitHub Explorer | `thundey-github-explorer` | React, Tailwind CSS, JavaScript, REST API   | true     | true      |
 
 Copy each project’s existing description, GitHub URL, and live URL from `src/data/projects.js` into the matching Supabase row. That file is retained only as a migration reference; the public site no longer imports it.
 
@@ -168,6 +173,22 @@ on conflict (slug) do update set
   updated_at = now();
 ```
 
+## Private project image flow
+
+```text
+Supabase projects table (published rows)
+        ↓
+public-project-images Edge Function
+        ↓
+short-lived signed URLs
+        ↓
+public project cards
+```
+
+The Edge Function accepts only a published project ID or slug. It never accepts an
+arbitrary Storage path and keeps the service-role key server-side. Configure
+`VITE_SUPABASE_FUNCTIONS_URL` in the public portfolio environment.
+
 ## Runtime flow
 
 ```text
@@ -177,7 +198,7 @@ src/services/projects.js
         ↓
 Projects component
         ↓
-Text-only project cards
+Published project cards and signed image URLs
 ```
 
 The portfolio requests only rows where `published = true` and `featured = true` for the homepage selected-work section. Unpublished projects are never displayed publicly.

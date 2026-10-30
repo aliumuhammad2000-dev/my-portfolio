@@ -12,6 +12,8 @@
  * @property {boolean} published
  * @property {string} created_at
  * @property {string|null|undefined} updated_at
+ * @property {string|null} image_expires_at
+ * @property {{id:string,kind:'cover'|'screenshot',alt_text:string|null,sort_order:number,url:string,expires_at:string}[]} screenshots
  */
 
 export {};
