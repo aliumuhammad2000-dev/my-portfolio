@@ -1,13 +1,24 @@
-import { supabase } from '../lib/supabase.js';
-import { projects as localProjects } from '../data/projects.js';
+import { supabase } from "../lib/supabase.js";
+import { projectDetails } from "../data/project-details.js";
 
-function mapProject(row) {
+const signedImageFunctionUrl =
+  import.meta.env.VITE_SUPABASE_FUNCTIONS_URL ||
+  (import.meta.env.VITE_SUPABASE_URL
+    ? `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/public-project-images`
+    : null);
+
+function mapProject(row, images = []) {
+  const cover = images.find((image) => image.kind === "cover");
   return {
     id: row.id,
     title: row.title,
     slug: row.slug,
     short_description: row.short_description,
     description: row.description,
+    details:
+      Array.isArray(row.details) && row.details.length > 0
+        ? row.details
+        : (projectDetails[row.slug] ?? []),
     github_url: row.github_url,
     live_url: row.live_url,
     technologies: Array.isArray(row.technologies) ? row.technologies : [],
@@ -15,57 +26,75 @@ function mapProject(row) {
     published: row.published,
     created_at: row.created_at,
     updated_at: row.updated_at,
+    image: cover?.url ?? null,
+    image_expires_at: cover?.expires_at ?? null,
+    screenshots: images.filter((image) => image.kind === "screenshot"),
   };
 }
 
 function requireSupabase() {
   if (!supabase) {
-    throw new Error('Supabase is not configured. Add the required environment variables.');
+    throw new Error(
+      "Supabase is not configured. Add the required environment variables.",
+    );
   }
-
   return supabase;
 }
 
 async function queryProjects(query) {
   const { data, error } = await query;
-
-  if (error) {
-    throw new Error('Unable to load projects right now.');
-  }
-
-  return (data ?? []).map(mapProject);
+  if (error) throw new Error("Unable to load projects right now.");
+  return data ?? [];
 }
 
-export async function getPublishedProjects() {
-  const client = requireSupabase();
+async function getSignedImages(slug) {
+  if (!signedImageFunctionUrl)
+    throw new Error("The public image service is not configured.");
+  const response = await fetch(
+    `${signedImageFunctionUrl}?slug=${encodeURIComponent(slug)}`,
+  );
+  if (!response.ok) throw new Error("Unable to load project images right now.");
+  const payload = await response.json();
+  return Array.isArray(payload.images) ? payload.images : [];
+}
 
-  return queryProjects(
-    client
-      .from('projects')
-      .select('*')
-      .eq('published', true)
-      .order('created_at', { ascending: false }),
+async function withSignedImages(rows) {
+  return Promise.all(
+    rows.map(async (row) => mapProject(row, await getSignedImages(row.slug))),
   );
 }
 
+export async function getPublishedProjects() {
+  const rows = await queryProjects(
+    requireSupabase()
+      .from("projects")
+      .select("*")
+      .eq("published", true)
+      .order("created_at", { ascending: false }),
+  );
+  return withSignedImages(rows);
+}
+
 export async function getFeaturedProjects() {
-  // Keep the public showcase deterministic and aligned with the reviewed portfolio.
-  // Supabase remains available for the admin/content workflow through the other service methods.
-  return localProjects;
+  const rows = await queryProjects(
+    requireSupabase()
+      .from("projects")
+      .select("*")
+      .eq("published", true)
+      .eq("featured", true)
+      .order("created_at", { ascending: false }),
+  );
+  return withSignedImages(rows);
 }
 
 export async function getProjectBySlug(slug) {
-  const client = requireSupabase();
-  const { data, error } = await client
-    .from('projects')
-    .select('*')
-    .eq('slug', slug)
-    .eq('published', true)
+  const { data, error } = await requireSupabase()
+    .from("projects")
+    .select("*")
+    .eq("slug", slug)
+    .eq("published", true)
     .maybeSingle();
-
-  if (error) {
-    throw new Error('Unable to load this project right now.');
-  }
-
-  return data ? mapProject(data) : null;
+  if (error) throw new Error("Unable to load this project right now.");
+  if (!data) return null;
+  return mapProject(data, await getSignedImages(data.slug));
 }
